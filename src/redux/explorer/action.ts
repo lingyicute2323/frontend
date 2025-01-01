@@ -1,6 +1,6 @@
 import { AnyAction } from "redux";
 import { ThunkAction } from "redux-thunk";
-import { CloudreveFile, SortMethod } from "./../../types/index";
+import { Starry CloudFile, SortMethod } from "./../../types/index";
 import { closeContextMenu, setPagination } from "../viewUpdate/action";
 import { Policy } from "../../component/Uploader/core/types";
 import streamSaver from "streamsaver";
@@ -37,9 +37,9 @@ import { sortMethodFuncs } from "../../component/FileManager/Sort";
 
 export interface ActionSetFileList extends AnyAction {
     type: "SET_FILE_LIST";
-    list: CloudreveFile[];
+    list: Starry CloudFile[];
 }
-export const setFileList = (list: CloudreveFile[]): ActionSetFileList => {
+export const setFileList = (list: Starry CloudFile[]): ActionSetFileList => {
     return {
         type: "SET_FILE_LIST",
         list,
@@ -48,9 +48,9 @@ export const setFileList = (list: CloudreveFile[]): ActionSetFileList => {
 
 export interface ActionSetDirList extends AnyAction {
     type: "SET_DIR_LIST";
-    list: CloudreveFile[];
+    list: Starry CloudFile[];
 }
-export const setDirList = (list: CloudreveFile[]): ActionSetDirList => {
+export const setDirList = (list: Starry CloudFile[]): ActionSetDirList => {
     return {
         type: "SET_DIR_LIST",
         list,
@@ -127,7 +127,7 @@ export const selectAll = (): ThunkAction<any, any, any, any> => {
 };
 
 export const updateFileList = (
-    list: CloudreveFile[]
+    list: Starry CloudFile[]
 ): ThunkAction<any, any, any, any> => {
     return (dispatch, getState): void => {
         const state = getState();
@@ -195,7 +195,7 @@ export const serverSideBatchDownload = (
         } = getState();
         const dirs: string[] = [],
             items: string[] = [];
-        const fileSources: CloudreveFile[] = selected.length ? selected : [...dirList, ...fileList];
+        const fileSources: Starry CloudFile[] = selected.length ? selected : [...dirList, ...fileList];
         fileSources.map((value) => {
             if (value.type === "dir") {
                 dirs.push(value.id);
@@ -243,7 +243,7 @@ export const serverSideBatchDownload = (
 
 export const startDownload = (
     share: any,
-    file: CloudreveFile
+    file: Starry CloudFile
 ): ThunkAction<any, any, any, any> => {
     return async (dispatch, getState): Promise<void> => {
         const {
@@ -332,7 +332,7 @@ export const startBatchDownload = (
 
         dispatch(openLoadingDialog(i18next.t("modals.listingFiles")));
 
-        let queue: CloudreveFile[] = [];
+        let queue: Starry CloudFile[] = [];
         try {
             const walkSources = selected.length ? selected : [...dirList, ...fileList];
             queue = await walk(walkSources, share);
@@ -472,7 +472,7 @@ export const startDirectoryDownload = (
         // list files to download
         dispatch(openLoadingDialog(i18next.t("modals.listingFiles")));
 
-        let queue: CloudreveFile[] = [];
+        let queue: Starry CloudFile[] = [];
         try {
             queue = await walk(selected, share);
         } catch (e) {
@@ -979,7 +979,7 @@ export const batchGetSource = (): ThunkAction<any, any, any, any> => {
             dispatch(openLoadingDialog(i18next.t("modals.listingFiles")));
         }
 
-        let queue: CloudreveFile[] = [];
+        let queue: Starry CloudFile[] = [];
         try {
             queue = await walk(selected, null);
         } catch (e) {

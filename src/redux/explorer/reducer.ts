@@ -1,6 +1,6 @@
 /* eslint-disable no-case-declarations */
 import { AnyAction } from "redux";
-import { CloudreveFile } from "../../types";
+import { Starry CloudFile } from "../../types";
 import { Policy } from "../../component/Uploader/core/types";
 
 interface SelectProps {
@@ -14,21 +14,21 @@ export interface ExplorerState {
     dndSignal: boolean;
     dndTarget: any;
     dndSource: any;
-    fileList: CloudreveFile[];
-    dirList: CloudreveFile[];
-    selected: CloudreveFile[];
+    fileList: Starry CloudFile[];
+    dirList: Starry CloudFile[];
+    selected: Starry CloudFile[];
     selectProps: SelectProps;
     lastSelect: {
-        file: CloudreveFile;
+        file: Starry CloudFile;
         index: number;
     };
     shiftSelectedIds: string[];
     imgPreview: {
-        first: CloudreveFile;
+        first: Starry CloudFile;
         other: [];
     };
     audioPreview: {
-        first: CloudreveFile;
+        first: Starry CloudFile;
         other: [];
         playingName: any;
         paused: boolean;
@@ -100,7 +100,7 @@ export const initState: ExplorerState = {
     sideBarOpen: false,
 };
 
-const checkSelectedProps = (selected: CloudreveFile[]): SelectProps => {
+const checkSelectedProps = (selected: Starry CloudFile[]): SelectProps => {
     const isMultiple = selected.length > 1;
     let withFolder = false;
     let withFile = false;

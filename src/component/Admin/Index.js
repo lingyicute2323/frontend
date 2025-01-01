@@ -331,7 +331,7 @@ export default function Index() {
                         />
                         <div className={classes.title}>
                             <Typography className={classes.cloudreve}>
-                                Cloudreve
+                                Starry Cloud
                             </Typography>
                             <Typography className={classes.version}>
                                 {version.backend}{" "}

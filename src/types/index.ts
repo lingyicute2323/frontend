@@ -1,4 +1,4 @@
-export interface CloudreveFile {
+export interface Starry CloudFile {
     id: string;
     name: string;
     size: number;
